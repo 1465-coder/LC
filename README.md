@@ -67,5 +67,34 @@ public:
         return nullptr;
     }
 };
-
+```
+```
+#2020.5.11
+#实现 pow(x, n) ，即计算 x 的 n 次幂函数。
+#迭代法#
+我们可以分三种情况来讨论
+(1)当n等于零，返回1
+(2)当n大于零，且为奇数时，表达为a^(n-1)*n；为偶数时，表示为a^n/2*a^n/2
+(3)当n小于零时，表达为1/(a^(-n))
+以此方式迭代即可，具体代码如下：
+```
+```
+class Solution {
+public:
+    double quickMul(double x, long long N)
+    {
+         if (N < 0) return quickMul(1/x, -N);
+        if (N==0) return 1.0;
+        else if (N%2==1) return quickMul(x, N- 1) * x;
+        else 
+        {
+            double tmp = quickMul(x, N/2);
+            return tmp * tmp; 
+        }
+    }
+    double myPow(double x, int n) 
+    {
+          return quickMul(x, n);
+    }
+};
 ```
