@@ -102,7 +102,7 @@ public:
 };
 ```
 ```
-#2020.5.11
+# 2020.5.11
 #实现 pow(x, n) ，即计算 x 的 n 次幂函数。
 #迭代法#
 我们可以分三种情况来讨论
@@ -132,43 +132,46 @@ public:
 };
 ```
 # 2020.5.14
-
 ## 数组中出现一次的数
-
 异或运算有以下三个性质:
-
 (1) 任何数和 0 做异或运算，结果仍然是原来的数；
 (2) 任何数和其自身做异或运算，结果是 0；
 (3) 异或运算满足交换律和结合律。
-
 假设数组中有 2m+1 个数，其中有 m个数各出现两次，一个数出现一次。根据异或性质可得，数组中的全部元素的异或运算结果总是为那个出现一次的数目。故可通过异或进行求解。
-
-`class Solution {`
-
-`public:`
-
-  `int singleNumber(vector<int>& nums) {`
-
-   `int ret=0;`
-
-​    `for(auto e:nums)`
-
-​    `ret^=e;`
-
-​    `return ret;`
-
-  `}`
-
-`};`
-
-`class Solution {`
-`public:`
-    `int singleNumber(vector<int>& nums) {`
-      `int ret=0,i;`
-        `for(i=0;i<size(nums);i++)`
-       `{` 
-           `ret^=nums[i];`
-       `}`
-       `return ret;`
-    `}`
-`};`
+（1）
+```
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+      int ret=0,i;
+        for(i=0;i<size(nums);i++)
+       { 
+           ret^=nums[i];
+       }
+       return ret;
+    }
+};
+```
+```
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+      int ret=0,i;
+        for(i=0;i<size(nums);i++)
+       { 
+           ret^=nums[i];
+       }
+       return ret;
+    }
+};
+```
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+      int ret=0;
+        for(auto e:nums)
+        ret^=e;
+       return ret;
+    }
+};
+```
