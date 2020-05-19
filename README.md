@@ -210,6 +210,7 @@ public:
 ```
 class Solution {
 public:
+枚举法
     bool checkPalindrome(const string& s, int low, int high) {
         for (int i = low, j = high; i < j; ++i, --j) {
             if (s[i] != s[j]) {
@@ -218,6 +219,7 @@ public:
         }
         return true;
     }
+  贪心算法
     bool validPalindrome(string s) {
         int low = 0, high = s.size() - 1;
         while (low < high) {
