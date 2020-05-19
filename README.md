@@ -191,3 +191,46 @@ public:
     }
 };
 ```
+# 2020.5.19
+#### 验证回文字符串
+给定一个非空字符串 s，最多删除一个字符。判断是否能成为回文字符串。
+```
+示例 1:
+
+输入: "aba"
+输出: True
+示例 2:
+
+输入: "abca"
+输出: True
+解释: 你可以删除c字符。
+```
+首先考虑如果不允许删除字符，如何判断一个字符串是否是回文串。常见的做法是使用双指针。定义左右指针，初始时分别指向字符串的第一个字符和最后一个字符，每次判断左右指针指向的字符是否相同，如果不相同，则不是回文串；如果相同，则将左右指针都往中间移动一位，直到左右指针相遇，则字符串是回文串。在允许最多删除一个字符的情况下，同样可以使用双指针，通过贪心算法实现。
+具体代码如下：
+```
+class Solution {
+public:
+    bool checkPalindrome(const string& s, int low, int high) {
+        for (int i = low, j = high; i < j; ++i, --j) {
+            if (s[i] != s[j]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    bool validPalindrome(string s) {
+        int low = 0, high = s.size() - 1;
+        while (low < high) {
+            char c1 = s[low], c2 = s[high];
+            if (c1 == c2) {
+                ++low;
+                --high;
+            }
+            else {
+                return checkPalindrome(s, low, high - 1) || checkPalindrome(s, low + 1, high);
+            }
+        }
+        return true;
+    }
+};
+```
